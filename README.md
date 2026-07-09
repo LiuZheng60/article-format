@@ -121,9 +121,9 @@ npx skills add LiuZheng60/article-format/article-format-lz
 
 | 示例 | 平台 | 说明 |
 |------|------|------|
-| [23 风格排版示例画廊](demo/style-examples-gallery.html) | 微信公众号 | 按「通用 7 / 节日 8 / 季节 4 / 主题 4」四类组织，每风格使用同一组示例组件，便于横向对比 23 种风格的配色与特色修饰 |
-| [微信排版示例 · 磨砂·翡翠凝碧](demo/wechat-emerald-jade-demo.html) | 微信公众号 | 单风格完整组件展示，主题「翡翠美学：从玉石到设计的质感语言」，覆盖强调卡 / 提示框 / 表格 / 进度条 / 信息卡片 / 代码块等 18 类组件，含磨砂特色微调（实色浅翡底 + 细描边 + 12px 圆角） |
-| [头条排版示例 · 翡翠美学](demo/toutiao-emerald-jade-demo.html) | 今日头条 | 同一篇内容按头条纯语义 HTML 规则重写，附「美化预览 / 头条实际效果」双视图与一键复制，直观展示与微信版的双平台差异 |
+| [23 风格排版示例画廊](https://liuzheng60.github.io/article-format/demo/style-examples-gallery.html) | 微信公众号 | 按「通用 7 / 节日 8 / 季节 4 / 主题 4」四类组织，每风格使用同一组示例组件，便于横向对比 23 种风格的配色与特色修饰 |
+| [微信排版示例 · 磨砂·翡翠凝碧](https://liuzheng60.github.io/article-format/demo/wechat-emerald-jade-demo.html) | 微信公众号 | 单风格完整组件展示，主题「翡翠美学：从玉石到设计的质感语言」，覆盖强调卡 / 提示框 / 表格 / 进度条 / 信息卡片 / 代码块等 18 类组件，含磨砂特色微调（实色浅翡底 + 细描边 + 12px 圆角） |
+| [头条排版示例 · 翡翠美学](https://liuzheng60.github.io/article-format/demo/toutiao-emerald-jade-demo.html) | 今日头条 | 同一篇内容按头条纯语义 HTML 规则重写，附「美化预览 / 头条实际效果」双视图与一键复制，直观展示与微信版的双平台差异 |
 
 > 所有示例均为技能的真实产物，复制页面内容可直接粘贴进对应编辑器。
 
