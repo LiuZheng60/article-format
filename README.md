@@ -33,16 +33,27 @@
 
 ## 📦 安装
 
+### 方式一 · WorkBuddy 推荐（SkillHub 平台）
+
+WorkBuddy 用户可直接在 **SkillHub** 技能市场一键安装，无需手动复制目录：
+
+- 技能名称：**公众号文章排版 (article-format-lz)**
+- 市场地址：<https://www.skillhub.cn/skills/article-format-lz>
+
+打开链接后点击「安装」即可同步到 WorkBuddy，重启 / 刷新后在对话中下达排版指令即可触发。
+
+### 方式二 · 手动复制到技能目录
+
 将本仓库的 `article-format-lz/` 目录复制到 WorkBuddy 的技能目录之一即可，**无需额外依赖**：
 
-**方式一 · 用户级（推荐，跨项目可用）**
+**用户级（推荐，跨项目可用）**
 
 ```bash
 # 假设仓库已 clone 到本地
 cp -r article-format-lz ~/.workbuddy/skills/
 ```
 
-**方式二 · 项目级（仅当前项目可见）**
+**项目级（仅当前项目可见）**
 
 ```bash
 cp -r article-format-lz {你的项目}/.workbuddy/skills/
@@ -51,6 +62,25 @@ cp -r article-format-lz {你的项目}/.workbuddy/skills/
 重启 / 刷新 WorkBuddy 后，在对话中直接下达排版指令即可触发（见下方「快速开始」）。
 
 > 技能目录约定详见 WorkBuddy 文档；用户级与项目级技能均可被自动发现与调用。
+
+### 作为 Agent Skill 安装（OpenCode / Codex / Cursor / Copilot / Gemini CLI 等）
+
+本技能同样兼容遵循 **Agent Skill** 规范的主流 AI 编程代理。使用 `npx skills` 一行命令即可安装：
+
+```bash
+npx skills add LiuZheng60/article-format/article-format-lz
+```
+
+安装后会在对应代理的技能目录中注册本 skill，支持以下代理（及所有遵循 Agent Skill 规范的工具）：
+
+- **OpenCode** — `opencode` 命令行代理
+- **Codex** — OpenAI Codex CLI
+- **Cursor** — Cursor IDE
+- **Copilot** — GitHub Copilot / VS Code
+- **Gemini CLI** — Google Gemini 命令行
+- 其他遵循 Agent Skill 规范的代理（Claude Code、Aider 等）
+
+安装完成后，在对应代理中下达排版指令即可调用本技能。
 
 ---
 
@@ -82,6 +112,20 @@ cp -r article-format-lz {你的项目}/.workbuddy/skills/
 ```
 
 **输出**：生成独立的 HTML 文件（微信 `wechat-{主题}.html`、头条 `toutiao-{主题}.html`），打开即可在预览面板中查看，点击「复制」按钮即可粘贴进对应编辑器。
+
+---
+
+## 🖼️ 示例演示
+
+仓库附带可直接打开查看的排版示例，覆盖单风格完整组件、全风格横向对比、以及双平台对照：
+
+| 示例 | 平台 | 说明 |
+|------|------|------|
+| [23 风格排版示例画廊](demo/style-examples-gallery.html) | 微信公众号 | 按「通用 7 / 节日 8 / 季节 4 / 主题 4」四类组织，每风格使用同一组示例组件，便于横向对比 23 种风格的配色与特色修饰 |
+| [微信排版示例 · 磨砂·翡翠凝碧](demo/wechat-emerald-jade-demo.html) | 微信公众号 | 单风格完整组件展示，主题「翡翠美学：从玉石到设计的质感语言」，覆盖强调卡 / 提示框 / 表格 / 进度条 / 信息卡片 / 代码块等 18 类组件，含磨砂特色微调（实色浅翡底 + 细描边 + 12px 圆角） |
+| [头条排版示例 · 翡翠美学](demo/toutiao-emerald-jade-demo.html) | 今日头条 | 同一篇内容按头条纯语义 HTML 规则重写，附「美化预览 / 头条实际效果」双视图与一键复制，直观展示与微信版的双平台差异 |
+
+> 所有示例均为技能的真实产物，复制页面内容可直接粘贴进对应编辑器。
 
 ---
 

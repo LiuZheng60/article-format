@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>翡翠美学：从玉石到设计的质感语言（今日头条版）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f0f0f3;
+    padding: 40px 16px;
+  }
+  .page-wrap { max-width: 680px; margin: 0 auto; }
+  .toolbar {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .toolbar h1 { font-size: 18px; color: #1a1a2e; margin-bottom: 6px; }
+  .toolbar p { font-size: 13px; color: #888; line-height: 1.6; }
+  .toolbar .legend {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: #fff5f5;
+    border-radius: 8px;
+    font-size: 12px;
+    color: #8a4a4a;
+    line-height: 1.8;
+  }
+  .toolbar .legend strong { color: #F04142; }
+  .copy-btn {
+    display: inline-block; margin-top: 12px;
+    padding: 10px 24px; background: #F04142; color: #fff;
+    border: none; border-radius: 8px; font-size: 14px; cursor: pointer;
+  }
+  .copy-btn:hover { background: #d03536; }
+  .view-tabs {
+    display: flex; gap: 0; margin-bottom: 0;
+    border-radius: 12px 12px 0 0; overflow: hidden;
+  }
+  .view-tab {
+    flex: 1; padding: 10px 16px; text-align: center;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+    background: #e8e8e8; color: #888; border: none;
+  }
+  .view-tab.active { background: #fff; color: #F04142; }
+  .preview-label {
+    font-size: 12px; color: #aaa; text-transform: uppercase;
+    letter-spacing: 2px; margin-bottom: 12px; padding-left: 4px;
+  }
+
+  /* 美化预览样式（仅浏览器渲染，不会被复制） */
+  .toutiao-content {
+    background: #fff; border-radius: 0 0 12px 12px; overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 28px 20px;
+  }
+  .toutiao-content h1 { font-size: 22px; font-weight: 700; color: #222; line-height: 1.5; margin: 0 0 12px; }
+  .toutiao-content h2 { font-size: 18px; font-weight: 700; color: #222; line-height: 1.6; margin: 24px 0 12px; }
+  .toutiao-content h3 { font-size: 16px; font-weight: 600; color: #333; line-height: 1.6; margin: 16px 0 8px; }
+  .toutiao-content p { font-size: 17px; color: #505050; line-height: 2; margin: 0 0 12px; letter-spacing: 1px; }
+  .toutiao-content strong { font-weight: 700; color: #222; }
+  .toutiao-content em { font-style: italic; color: #777; }
+  .toutiao-content blockquote { border-left: 3px solid #ddd; padding: 8px 0 8px 16px; margin: 12px 0; }
+  .toutiao-content blockquote p { font-size: 16px; color: #666; line-height: 1.9; margin: 0 0 4px; }
+  .toutiao-content hr { border: none; height: 1px; background: #eee; margin: 16px 0; }
+  .toutiao-content ul, .toutiao-content ol { padding-left: 24px; margin: 0 0 12px; }
+  .toutiao-content li { font-size: 17px; color: #505050; line-height: 2; margin-bottom: 6px; letter-spacing: 1px; }
+  .toutiao-content table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  .toutiao-content th { background: #f7f7f7; font-size: 14px; font-weight: 700; color: #222; padding: 10px 12px; border: 1px solid #e8e8e8; text-align: center; }
+  .toutiao-content td { font-size: 14px; color: #666; padding: 10px 12px; border: 1px solid #e8e8e8; text-align: center; }
+  .toutiao-content pre { background: #f5f5f5; border-radius: 8px; padding: 14px 16px; font-family: 'SF Mono', Monaco, Menlo, Consolas, monospace; font-size: 14px; color: #333; line-height: 1.7; overflow-x: auto; margin: 12px 0; }
+
+  /* 头条实际效果模拟（无自定义样式） */
+  .toutiao-raw { background: #fff; border-radius: 0 0 12px 12px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08); padding: 28px 20px; }
+  .toutiao-raw h1 { font-size: 20px; font-weight: bold; color: #222; margin: 0 0 10px; }
+  .toutiao-raw h2 { font-size: 17px; font-weight: bold; color: #222; margin: 20px 0 10px; }
+  .toutiao-raw p { font-size: 16px; color: #333; line-height: 1.8; margin: 0 0 10px; }
+  .toutiao-raw strong { font-weight: bold; }
+  .toutiao-raw em { font-style: italic; }
+  .toutiao-raw blockquote { border-left: 3px solid #ccc; padding-left: 12px; margin: 10px 0; color: #666; }
+  .toutiao-raw hr { border: none; border-top: 1px solid #eee; margin: 12px 0; }
+  .toutiao-raw ul, .toutiao-raw ol { padding-left: 20px; margin: 0 0 10px; }
+  .toutiao-raw li { font-size: 16px; color: #333; line-height: 1.8; margin-bottom: 4px; }
+  .toutiao-raw table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  .toutiao-raw th, .toutiao-raw td { border: 1px solid #ddd; padding: 6px 10px; font-size: 14px; }
+  .toutiao-raw pre { background: #f5f5f5; padding: 10px; font-size: 13px; font-family: monospace; }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 工具栏 -->
+  <div class="toolbar">
+    <h1>翡翠美学：从玉石到设计的质感语言（今日头条版）</h1>
+    <p>纯语义HTML · ProseMirror兼容 · 复制预览区内容直接粘贴到头条编辑器即可</p>
+    <div class="legend">
+      <strong>头条排版说明：</strong>头条编辑器基于 ProseMirror，<strong>所有 inline style 会被剥离</strong>，只保留语义标签。<br>
+      因此本页内容全部使用纯语义 HTML（h1/h2/h3、p、strong、blockquote、ul/ol、table、pre、hr），<strong>不内联任何颜色</strong>。<br>
+      层级靠文字符号（◆ 章节、▶ 子节、★ 要点）建立；卡片/键值/进度条降级为 blockquote；对比双栏用表格。<br>
+      复制时只复制语义结构，配色由头条编辑器统一控制（与微信版"翡翠凝碧"色系不同，这是平台差异）。
+    </div>
+    <button class="copy-btn" onclick="copyContent()">一键复制排版内容</button>
+  </div>
+
+  <!-- 视图切换 -->
+  <div class="view-tabs">
+    <button class="view-tab active" onclick="switchView('styled')">美化预览</button>
+    <button class="view-tab" onclick="switchView('raw')">头条实际效果</button>
+  </div>
+
+  <div class="preview-label">— 预览区 —</div>
+
+  <!-- ===== 美化预览（纯语义HTML，零inline style） ===== -->
+  <div class="toutiao-content" id="styled-view">
+
+    <!-- T1. 主标题 -->
+    <h1>翡翠美学：从玉石到设计的质感语言</h1>
+
+    <!-- T2. 摘要引导 -->
+    <p><em>温润如玉，不喧不扰——探索翡翠色系在设计中的克制表达。本文为「磨砂·翡翠凝碧」风格的同一内容在今日头条的排版呈现。</em></p>
+
+    <!-- T3. 分割线 -->
+    <hr>
+
+    <!-- T6. 章节标题 -->
+    <h2>◆ 为什么是翡翠绿</h2>
+
+    <!-- T4. 正文段落 -->
+    <p>在色彩心理学中，绿色代表生机与平和。但翡翠绿不同于普通的草绿或薄荷绿——它带有灰调底色，饱和度适中，明度偏暗，天生具备一种"被时间打磨过"的沉稳气质。</p>
+
+    <p>这种气质让翡翠绿在设计领域有着独特的优势：它足够有存在感，能作为视觉锚点；又足够克制，不会喧宾夺主。正如一块好玉，你注意到它时觉得温润，不看它时又不觉得突兀。</p>
+
+    <!-- T5. 行内加粗强调 -->
+    <p>在实际应用中，翡翠绿常被用于<strong>品牌主色</strong>、<strong>高端定位</strong>的场景。它比蓝色温暖，比灰色有生命力，比金色低调——恰好落在"高级感"的甜区。</p>
+
+    <!-- T7. 子标题 -->
+    <h3>▶ 翡翠色的三重维度</h3>
+
+    <!-- T4. 引导 -->
+    <p>翡翠绿的品质可以从三个维度理解：</p>
+
+    <!-- T9. 无序列表 -->
+    <ul>
+      <li><strong>色相：</strong>主色调在 HSL 色环 150°-170° 之间，介于正绿与青绿之间</li>
+      <li><strong>饱和度：</strong>控制在 35%-55% 之间，过高则艳俗，过低则灰暗</li>
+      <li><strong>明度：</strong>主色明度 35%-45% 为佳，浅底色 90%-95%，形成舒适的明暗梯度</li>
+    </ul>
+
+    <!-- T16. 信息卡片（核心洞察，blockquote 实现） -->
+    <blockquote>
+      <p><strong>核心洞察：</strong>翡翠绿的设计哲学不是"用绿色"，而是"用绿色的气质"——温润、克制、有底蕴。它适合需要表达品质感和信赖感的设计场景，而非追求冲击力的营销场景。</p>
+    </blockquote>
+
+    <!-- T3. 分割线 -->
+    <hr>
+
+    <!-- T6. 章节标题 -->
+    <h2>◆ 磨砂质感的实现策略</h2>
+
+    <!-- T4. 正文段落 -->
+    <p>"磨砂"是一种触觉隐喻——表面不光滑、不完全透明，但也不完全 opaque。在公众号排版中，真正的半透明效果无法可靠实现（编辑器限制），因此需要用实色加描边来模拟。而头条平台更进一步：所有样式由编辑器控制，作者只提供语义结构，磨砂质感以"留白与分段"自然呈现。</p>
+
+    <!-- T10. 有序列表 -->
+    <ol>
+      <li><strong>实色浅底：</strong>用浅翡翠底色做卡片背景，不用半透明</li>
+      <li><strong>细描边：</strong>浅翡翠描边，在白底上可见但不抢眼</li>
+      <li><strong>大圆角：</strong>圆角加大，强化柔和通透的触感暗示</li>
+      <li><strong>留白呼吸：</strong>padding 加大，用留白代替透明度营造呼吸感</li>
+    </ol>
+
+    <!-- T12. 数据高亮 -->
+    <p><strong>42%</strong></p>
+    <p><em>用户认为翡翠绿色调比纯白界面更有"品质信赖感"</em></p>
+
+    <!-- T16. 信息提示框（blockquote 实现） -->
+    <blockquote>
+      <p>💡 <strong>提示：</strong>磨砂质感的关键不在于透明度数值，而在于"柔和边界加充足留白"。在头条平台，只需把要点写成独立段落、用 blockquote 收拢，编辑器便会自动给出清晰的层级与呼吸感。</p>
+    </blockquote>
+
+    <!-- T6. 章节标题 -->
+    <h2>◆ 翡翠绿 vs 冰蓝色：冷暖对比</h2>
+
+    <!-- T4. 正文段落 -->
+    <p>翡翠绿与冰蓝色是设计中最常被拿来对比的两种"质感色"。它们都带有灰调、都偏沉稳，但色温截然不同——翡翠偏暖，冰蓝偏冷。这决定了它们适合的场景完全不同。</p>
+
+    <!-- T13. 对比表格（头条不支持 flex 双栏，用表格替代） -->
+    <table>
+      <tr>
+        <th>维度</th>
+        <th>🌿 翡翠绿</th>
+        <th>❄️ 冰蓝色</th>
+      </tr>
+      <tr>
+        <td>色温</td>
+        <td>暖调沉稳</td>
+        <td>冷调锐利</td>
+      </tr>
+      <tr>
+        <td>气质</td>
+        <td>温润如玉</td>
+        <td>清冽通透</td>
+      </tr>
+      <tr>
+        <td>联想</td>
+        <td>品质信赖</td>
+        <td>科技理性</td>
+      </tr>
+      <tr>
+        <td>适配领域</td>
+        <td>生活方式类</td>
+        <td>技术工具类</td>
+      </tr>
+    </table>
+
+    <!-- T7. 子标题 -->
+    <h3>▶ 配色搭配建议</h3>
+
+    <!-- T13. 搭配表格 -->
+    <table>
+      <tr>
+        <th>搭配角色</th>
+        <th>推荐色值</th>
+        <th>用途</th>
+      </tr>
+      <tr>
+        <td>主色</td>
+        <td>#3D8B6E</td>
+        <td>标题装饰、强调</td>
+      </tr>
+      <tr>
+        <td>辅色</td>
+        <td>#7DC4A0</td>
+        <td>渐变终点、数据卡</td>
+      </tr>
+      <tr>
+        <td>浅底</td>
+        <td>#EDF7F2</td>
+        <td>卡片背景、引用块</td>
+      </tr>
+      <tr>
+        <td>描边</td>
+        <td>#C5DED2</td>
+        <td>卡片边框模拟磨砂</td>
+      </tr>
+      <tr>
+        <td>正文</td>
+        <td>#2E5C48</td>
+        <td>段落文字</td>
+      </tr>
+    </table>
+
+    <!-- T3. 分割线 -->
+    <hr>
+
+    <!-- T6. 章节标题 -->
+    <h2>◆ 实际应用案例</h2>
+
+    <!-- T4. 正文段落 -->
+    <p>以下是翡翠绿系在不同场景中的应用评估，以「数值 + 等级词」展示各维度的适配度（头条平台进度条视觉无法渲染，降级为分值表达）：</p>
+
+    <!-- T17. 键值列表（进度条降级，blockquote 卡片） -->
+    <blockquote>
+      <p><strong>品牌设计</strong> 92% 极佳适配</p>
+      <p>高端茶品牌、文化类内容主色首选，传达沉稳底蕴</p>
+    </blockquote>
+    <blockquote>
+      <p><strong>生活方式</strong> 85% 高度契合</p>
+      <p>家居、美学生活类内容温润耐看</p>
+    </blockquote>
+    <blockquote>
+      <p><strong>内容排版</strong> 78% 温润可读</p>
+      <p>长文阅读不刺眼，适合品质号</p>
+    </blockquote>
+    <blockquote>
+      <p><strong>科技产品</strong> 45% 偏暖不搭</p>
+      <p>缺乏锐利感与效率感，不推荐</p>
+    </blockquote>
+
+    <!-- T16. 信息卡片（案例，blockquote 卡片） -->
+    <blockquote>
+      <p><strong>高端茶品牌包装</strong>（优秀案例）</p>
+      <p>主色 #3D8B6E 翡翠绿 / 辅色 #7DC4A0 浅翡翠</p>
+      <p>效果：温润雅致，传达东方茶文化的沉稳底蕴 · 评分 0.95 优秀</p>
+    </blockquote>
+    <blockquote>
+      <p><strong>SaaS 工具界面</strong>（不推荐）</p>
+      <p>主色 #3D8B6E 翡翠绿 / 辅色 #7DC4A0 浅翡翠</p>
+      <p>效果：暖调偏柔，缺乏科技产品需要的锐利感 · 评分 0.40 较差</p>
+    </blockquote>
+
+    <!-- T11. 引用块（带来源） -->
+    <blockquote>
+      <p>"好色如好玉，不在浓而在润。翡翠之所以珍贵，不因为它绿，而因为它绿得恰到好处——多一分则艳，少一分则灰。设计用色亦然。"</p>
+      <p>—— 质感设计笔记</p>
+    </blockquote>
+
+    <!-- T17. 键值列表（2~3列文字表替代） -->
+    <blockquote>
+      <p><strong>适用场景</strong></p>
+      <p>品牌设计、高端消费品、文化类内容、生活方式类排版</p>
+    </blockquote>
+    <blockquote>
+      <p><strong>不适用场景</strong></p>
+      <p>硬科技、金融数据、效率工具、强营销促销类内容</p>
+    </blockquote>
+    <blockquote>
+      <p><strong>搭配建议</strong></p>
+      <p>配暖灰文字色、浅翡翠底色，避免与冷蓝色系混用</p>
+      <p>方法：磨砂描边加 大圆角加 留白</p>
+    </blockquote>
+    <blockquote>
+      <p><strong>对比风格</strong></p>
+      <p>冬·雪霁冰蓝（冷调锐利）vs 磨砂·翡翠凝碧（暖调温润）</p>
+      <p>方法：同属质感色系，色温形成冷暖互补</p>
+    </blockquote>
+
+    <!-- T14. 代码块 -->
+    <pre>:root {
+  --primary: #3D8B6E;
+  --accent: #7DC4A0;
+  --light-bg: #EDF7F2;
+  --border: #C5DED2;
+  --radius: 12px;
+}
+// 磨砂·翡翠凝碧 CSS 变量定义（头条仅作展示，不内联）</pre>
+
+    <!-- T6. 章节标题 -->
+    <h2>◆ 关键要点回顾</h2>
+
+    <!-- T16. 要点回顾（blockquote 卡片，5条） -->
+    <blockquote>
+      <p>📌 <strong>01</strong> 翡翠绿是暖调质感色，适合品质信赖场景，不适合科技锐利场景</p>
+    </blockquote>
+    <blockquote>
+      <p>📌 <strong>02</strong> 磨砂质感等于实色浅底加细描边加大圆角加大留白，不依赖半透明</p>
+    </blockquote>
+    <blockquote>
+      <p>📌 <strong>03</strong> 描边色 #C5DED2 与主色同系，白底可见但不抢眼</p>
+    </blockquote>
+    <blockquote>
+      <p>📌 <strong>04</strong> 与冬·雪霁冰蓝形成冷暖对比，色温互补不冲突</p>
+    </blockquote>
+    <blockquote>
+      <p>📌 <strong>05</strong> 头条平台不内联配色，本文在头条以语义结构呈现，配色由编辑器统一控制</p>
+    </blockquote>
+
+    <!-- T3. 分割线 -->
+    <hr>
+
+    <!-- T15. 底部签名 -->
+    <p>本文为设计美学系列文章，转载请注明出处</p>
+    <p><em>磨砂·翡翠凝碧 风格 · 同一内容已在微信公众号以全内联样式发布，此为今日头条纯语义版</em></p>
+
+  </div>
+
+  <!-- ===== 头条实际效果模拟（无CSS，模拟ProseMirror渲染） ===== -->
+  <div class="toutiao-raw" id="raw-view" style="display:none">
+    <p style="font-size:13px;color:#aaa;text-align:center;margin-bottom:16px">↓ 以下模拟头条编辑器实际渲染效果（仅语义标签，无自定义样式） ↓</p>
+    <div id="raw-content"></div>
+  </div>
+
+</div>
+
+<script>
+function copyContent() {
+  var content = document.getElementById('styled-view');
+  var range = document.createRange();
+  range.selectNodeContents(content);
+  var selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+  try {
+    document.execCommand('copy');
+    var btn = document.querySelector('.copy-btn');
+    var originalText = btn.textContent;
+    btn.textContent = '✓ 已复制，可粘贴到头条编辑器';
+    btn.style.background = '#00a663';
+    setTimeout(function() {
+      btn.textContent = originalText;
+      btn.style.background = '#F04142';
+    }, 3000);
+  } catch (err) {
+    alert('复制失败，请手动选中预览区内容复制');
+  }
+  selection.removeAllRanges();
+}
+
+function switchView(view) {
+  var tabs = document.querySelectorAll('.view-tab');
+  var styledView = document.getElementById('styled-view');
+  var rawView = document.getElementById('raw-view');
+  if (view === 'styled') {
+    tabs[0].classList.add('active');
+    tabs[1].classList.remove('active');
+    styledView.style.display = '';
+    rawView.style.display = 'none';
+  } else {
+    tabs[0].classList.remove('active');
+    tabs[1].classList.add('active');
+    styledView.style.display = 'none';
+    rawView.style.display = '';
+    if (!document.getElementById('raw-content').innerHTML) {
+      var clone = styledView.cloneNode(true);
+      var all = clone.querySelectorAll('*');
+      for (var i = 0; i < all.length; i++) {
+        all[i].removeAttribute('class');
+        all[i].removeAttribute('style');
+      }
+      var walker = document.createTreeWalker(clone, NodeFilter.SHOW_COMMENT, null, null);
+      var comments = [];
+      while (walker.nextNode()) comments.push(walker.currentNode);
+      comments.forEach(function(c) { c.parentNode.removeChild(c); });
+      document.getElementById('raw-content').innerHTML = clone.innerHTML;
+    }
+  }
+}
+</script>
+</body>
+</html>
